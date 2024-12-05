@@ -5,6 +5,8 @@ import 'package:responsi_pam/models/amiibo_model.dart';
 import 'package:responsi_pam/screens/detail_screen.dart';
 
 class FavoriteScreen extends StatefulWidget {
+  const FavoriteScreen({super.key});
+
   @override
   _FavoriteScreenState createState() => _FavoriteScreenState();
 }
@@ -51,7 +53,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text('${amiibo.name} has been removed from favorites!'),
-        duration: Duration(seconds: 2),
+        duration: const Duration(seconds: 2),
       ),
     );
 
@@ -64,10 +66,10 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Favorite Amiibos'),
+        title: const Text('Favorite Amiibos'),
       ),
       body: favorites.isEmpty
-          ? Center(child: Text('No favorites yet.'))
+          ? const Center(child: Text('No favorites yet.'))
           : ListView.builder(
               itemCount: favorites.length,
               itemBuilder: (context, index) {
@@ -82,7 +84,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                   background: Container(
                     color: Colors.red,
                     alignment: Alignment.centerLeft,
-                    child: Padding(
+                    child: const Padding(
                       padding: EdgeInsets.only(left: 16.0),
                       child: Icon(Icons.delete, color: Colors.white),
                     ),
@@ -90,7 +92,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                   secondaryBackground: Container(
                     color: Colors.red,
                     alignment: Alignment.centerRight,
-                    child: Padding(
+                    child: const Padding(
                       padding: EdgeInsets.only(right: 16.0),
                       child: Icon(Icons.delete, color: Colors.white),
                     ),

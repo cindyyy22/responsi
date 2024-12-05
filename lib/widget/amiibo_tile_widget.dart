@@ -8,7 +8,7 @@ class AmiiboTile extends StatelessWidget {
   final Amiibo amiibo;
   final Function()? onFavoriteTapped; 
 
-  AmiiboTile({
+  const AmiiboTile({super.key, 
     required this.amiibo,
     this.onFavoriteTapped,
   });
@@ -16,14 +16,14 @@ class AmiiboTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: EdgeInsets.all(8.0),
+      margin: const EdgeInsets.all(8.0),
       elevation: 4.0,
       child: ListTile(
         leading: Image.network(amiibo.imageUrl),
         title: Text(amiibo.name),
         subtitle: Text(amiibo.gameSeries),
         trailing: IconButton(
-          icon: Icon(Icons.favorite_border),
+          icon: const Icon(Icons.favorite_border),
           onPressed: onFavoriteTapped,
         ),
         onTap: () {

@@ -6,6 +6,8 @@ import 'package:responsi_pam/models/amiibo_model.dart';
 import 'package:responsi_pam/network/amiibo_service.dart';
 
 class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -18,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    amiiboList = AmiiboService().getAmiiboList();  /
+    amiiboList = AmiiboService().getAmiiboList();  
     _loadFavorites();
   }
 
@@ -63,23 +65,23 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Nintendo Amiibo')),
+      appBar: AppBar(title: const Text('Nintendo Amiibo')),
       body: _selectedIndex == 0
           ? FutureBuilder<List<Amiibo>>(
               future: amiiboList,
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(child: CircularProgressIndicator());
+                  return const Center(child: CircularProgressIndicator());
                 } else if (snapshot.hasError) {
                   return Center(child: Text('Error: ${snapshot.error}'));
                 } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-                  return Center(child: Text('No data available'));
+                  return const Center(child: Text('No data available'));
                 } else {
-                  final amiibos = snapshot.data!;
+                  final amiibo = snapshot.data!;
                   return ListView.builder(
-                    itemCount: amiibos.length,
+                    itemCount: amiibo.length,
                     itemBuilder: (context, index) {
-                      final amiibo = amiibos[index];
+                      final amiibo = Amiibo [index];
                       return AmiiboTile(
                         amiibo: amiibo,
                         onFavoriteTap: (amiibo) => _toggleFavorite(amiibo),
@@ -93,7 +95,7 @@ class _HomeScreenState extends State<HomeScreen> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
-        items: [
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
@@ -107,3 +109,4 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
+

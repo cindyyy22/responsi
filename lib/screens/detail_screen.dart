@@ -4,7 +4,7 @@ import 'package:responsi_pam/models/amiibo_model.dart';
 class DetailScreen extends StatelessWidget {
   final Amiibo amiibo;
 
-  DetailScreen({required this.amiibo});
+  const DetailScreen({super.key, required this.amiibo});
 
   @override
   Widget build(BuildContext context) {
@@ -19,21 +19,21 @@ class DetailScreen extends StatelessWidget {
           children: <Widget>[
            
             Image.network(amiibo.imageUrl),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             
          
             Text(
               amiibo.name,
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
 
           
             Text(
               'Game Series: ${amiibo.gameSeries}',
               style: TextStyle(fontSize: 18, color: Colors.grey[700]),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
 
            
             Text(
